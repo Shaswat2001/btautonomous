@@ -1,5 +1,26 @@
 <launch>
+    <arg name = "world" default = "maze1"/> 
+    <arg name = "robot_name" value = "$(env TURTLEBOT3_MODEL)"/>
+    <arg name = "x_pos" default = "1.0"/>
+    <arg name = "y_pos" default = "1.0"/>
+    <arg name = "z_pos" default = "0"/>
 
+    <param name="robot_description" command = "$(find xacro)/xacro '$(find turtlebot3_description)/urdf/turtlebot3_$(arg robot_name).urdf.xacro'"/>
 
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value = "$(find examples)/turtlebot/world/$(arg world).world"/>
+        <arg name="debug" value="false" />
+        <arg name="gui" value="true" />
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="headless" value="false"/>
+    </include>
 
+    <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model turtlebot -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)" output="screen"/>
+
+    <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+        <arg name="map_file" value = "$(find examples)/turtlebot/maps/$(arg world)_map.yaml"/>
+        <arg name="move_forward_only" value="true"/>
+    </include>
 </launch>
