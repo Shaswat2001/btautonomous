@@ -1,4 +1,4 @@
-image: my_map.pgm
+image: maze1_map.pgm
 resolution: 0.100000
 origin: [-5.000000, -5.000000, 0.000000]
 negate: 0
