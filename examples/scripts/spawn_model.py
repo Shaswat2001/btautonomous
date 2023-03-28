@@ -3,6 +3,7 @@
 import rospy
 import random
 import yaml
+from tf.transformations import quaternion_from_euler
 from gazebo_msgs.srv import SpawnModel
 from geometry_msgs.msg import Pose
 from yaml.loader import SafeLoader
@@ -12,7 +13,12 @@ def create_pos_from_location(bl_location):
     p = Pose()
     p.position.x = bl_location[0]
     p.position.y = bl_location[1]
-    p.position.z = 0
+    quaternion = quaternion_from_euler(0,0,bl_location[2])
+
+    p.orientation.x = quaternion[0]
+    p.orientation.y = quaternion[1]
+    p.orientation.z = quaternion[2]
+    p.orientation.w = quaternion[3]
 
     return p
 
