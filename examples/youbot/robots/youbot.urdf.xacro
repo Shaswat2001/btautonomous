@@ -38,9 +38,12 @@
        the origin block defines where the component is w.r.t its parent (in this case the parent 
        is the world frame). For more, see http://www.ros.org/wiki/xacro -->
 
+
+
+
 <!-- foot for arm-->
   <xacro:youbot_base name="base"/>
-  <!-- <xacro:youbot_plate name="plate" parent="base_link">
+  <xacro:youbot_plate name="plate" parent="base_link">
     <origin xyz="-0.159 0 0.046" rpy="0 0 0" />
   </xacro:youbot_plate>
   <xacro:youbot_arm name="arm" parent="base_link">
@@ -48,7 +51,6 @@
   </xacro:youbot_arm>
   <xacro:youbot_gripper name="gripper" parent="arm_link_5">
     <origin xyz="0 0 0" rpy="0 0 0" />
-  </xacro:youbot_gripper> -->
+  </xacro:youbot_gripper>
 
-  
 </robot>

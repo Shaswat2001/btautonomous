@@ -63,10 +63,10 @@ class GetMobileToPose(py_trees.behaviour.Behaviour):
         return goal
 
 
-class IsMobileAtPose(py_trees.behaviour.Behaviour):
+class PickObject(py_trees.behaviour.Behaviour):
 
     def __init__(self, name):
-        super(IsMobileAtPose,self).__init__(name)
+        super(PickObject,self).__init__(name)
 
     def setup(self):
         pass

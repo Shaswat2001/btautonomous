@@ -1,0 +1,23 @@
+
+<launch>
+    <arg name = "world" default = "maze1"/> 
+    <arg name = "x_pos" default = "1.0"/>
+    <arg name = "y_pos" default = "1.0"/>
+    <arg name = "z_pos" default = "0"/>
+
+    <param name = "robot_description" command = "$(find xacro)/xacro '$(find examples)/kuka/urdf/kr210.urdf.xacro'"/>
+    <param name = "block_locations" value = "$(find examples)/turtlebot/maps/block_location.yaml"/> 
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="false" />
+        <arg name="gui" value="true" />
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="headless" value="false"/>
+    </include>
+
+    <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model kuka -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)" output="screen"/>
+    <!-- <node name = "object_spawner" pkg = "examples" type ="spawn_model.py"/> -->
+
+</launch>

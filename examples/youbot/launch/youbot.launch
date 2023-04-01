@@ -1,30 +1,32 @@
 <launch>
     <arg name = "world" default = "maze1"/> 
-    <arg name = "bt_name" default = "bt1.xml"/>
     <arg name = "x_pos" default = "1.0"/>
     <arg name = "y_pos" default = "1.0"/>
     <arg name = "z_pos" default = "0"/>
 
     <param name = "robot_description" command = "$(find xacro)/xacro '$(find examples)/youbot/robots/youbot.urdf.xacro'"/>
-    <!-- <param name = "block_locations" value = "$(find examples)/turtlebot/maps/block_location.yaml"/> 
-    <param name = "bt_location" value = "$(find examples)/turtlebot/xml/$(arg bt_name)"/> -->
+    <param name = "block_locations" value = "$(find examples)/turtlebot/maps/block_location.yaml"/> 
+
+    <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find examples)/youbot/rviz/config_file.rviz" /> -->
     
-    <xacro:include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <!-- <arg name="world_name" value = "$(find examples)/turtlebot/world/$(arg world).world"/> -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value = "$(find examples)/turtlebot/world/$(arg world).world"/>
         <arg name="debug" value="false" />
         <arg name="gui" value="true" />
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="headless" value="false"/>
-    </xacro:include>
+    </include>
 
     <!-- push robot_description to factory and spawn robot in gazebo -->
-    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model youbot -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)" output="screen"/>
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model turtlebot -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)" output="screen"/>
 
-    <!-- <xacro:include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+
+    <!-- <include file="$(find turtlebot3_navigation)/launch/turtlebot3_navigation.launch">
         <arg name="map_file" value = "$(find examples)/turtlebot/maps/$(arg world)_map.yaml"/>
         <arg name="move_forward_only" value="true"/>
-    </xacro:include> -->
+    </include> -->
 
     <!-- <node name = "object_spawner" pkg = "examples" type ="spawn_model.py"/> -->
 

@@ -30,7 +30,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm0.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm0.dae" />
 				</geometry>
 				<material name="DarkGrey" />
 			</visual>
@@ -39,7 +39,7 @@
 				<!--<origin xyz="0.023 0 0.006" rpy="0 0 0"/>-->
 				<origin xyz="0 0 0" rpy="0 0 0"/>
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm0_convex.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm0_convex.dae" />
 					<!--<cylinder length="0.078" radius="0.093"/>-->
 				</geometry>
 			</collision>			
@@ -74,7 +74,7 @@
 			<visual>
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm1.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm1.dae" />
 				</geometry>
 				<!--<material name="Orange" />-->
 			</visual>
@@ -83,7 +83,7 @@
 				<!--<origin xyz="0 0 -0.003" rpy="0 0 0" />-->
 				<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm1_convex.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm1_convex.dae" />
 					<!--<cylinder length="0.102" radius="0.080"/>-->
 				</geometry>
 			</collision>		
@@ -110,7 +110,7 @@
 			<visual>
 			<origin xyz="0 -0.032 0.078" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm2.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm2.dae" />
 				</geometry>
 				<material name="Orange" />
 			</visual>
@@ -119,7 +119,7 @@
 				<!--<origin xyz="0.001 -0.041 0.074" rpy="0 0 0" />-->
 				<origin xyz="0 -0.032 0.078" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm2_convex.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm2_convex.dae" />
 					<!--<box size="0.074 0.082 0.222"/>-->
 				</geometry>
 			</collision>
@@ -154,7 +154,7 @@
 			<visual>
 				<origin xyz="0.000 0.028 0.079" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm3.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm3.dae" />
 				</geometry>
 				<material name="Orange" />
 			</visual>
@@ -163,7 +163,7 @@
 				<!--<origin xyz="0.000 0.025 0.067" rpy="0 0 0" />-->
 				<origin xyz="0.000 0.028 0.079" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm3_convex.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm3_convex.dae" />
 					<!--<box size="0.064 0.054 0.192"/>-->
 				</geometry>
 			</collision>
@@ -190,7 +190,7 @@
 			<visual>
 				<origin xyz="0 -0.010 0.029" rpy="0 0 0"/>
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm4.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm4.dae" />
 				</geometry>
 				<material name="Orange" />
 			</visual>
@@ -199,7 +199,7 @@
 				<!--<origin xyz="0 0 0.026" rpy="0 0 0" />-->
 				<origin xyz="0 -0.010 0.029" rpy="0 0 0"/>
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm4_convex.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm4_convex.dae" />
 					<!--<box size="0.058 0.100 0.118"/>-->
 				</geometry>
 			</collision>
@@ -226,7 +226,7 @@
 			<visual>
 				<origin xyz="0.003 0 -0.034" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm5.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm5.dae" />
 				</geometry>
 				<material name="DarkGrey" />
 			</visual>
@@ -234,7 +234,7 @@
 			<collision>
 				<origin xyz="0.003 0 -0.034" rpy="0 0 0" />
 				<geometry>
-					<mesh filename="package://youbot_description/meshes/youbot_arm/arm5_convex.dae" />
+					<mesh filename="package://examples/youbot/meshes/youbot_arm/arm5_convex.dae" />
 					<!--<box size="0.054 0.096 0.030"/>-->
 				</geometry>
 			</collision>

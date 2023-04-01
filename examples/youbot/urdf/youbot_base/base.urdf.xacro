@@ -81,7 +81,7 @@
       			<visual>
         			<origin xyz="0 0 0" rpy="0 0 0" />  
         			<geometry>
-          				<mesh filename="package://youbot_description/meshes/youbot_base/base.dae"/>
+          				<mesh filename="package://examples/youbot/meshes/youbot_base/base.dae"/>
         			</geometry> 
         			<material name="DarkGrey"/>
       			</visual>
@@ -89,7 +89,7 @@
         			<origin xyz="0 0 0" rpy="0 0 0" />
         			<geometry>
           				<!--<box size="${base_size_x} ${base_size_y} ${base_size_z}" />-->
-					<mesh filename="package://youbot_description/meshes/youbot_base/base_convex.dae"/>
+					<mesh filename="package://examples/youbot/meshes/youbot_base/base_convex.dae"/>
 	       			</geometry>
       			</collision>
     		</link>		
@@ -139,7 +139,7 @@
       			</inertial>
       			<visual>
         			<origin xyz="0 0 0" rpy="0 0 0" />
-					<!--<mesh filename="package://youbot_description/meshes/youbot_base/youbot_wheel.stl" />-->
+					<!--<mesh filename="package://examples/youbot/meshes/youbot_base/youbot_wheel.stl" />-->
 				<geometry>
 					<sphere radius="${wheel_radius}"/>
 				</geometry>
@@ -194,7 +194,7 @@
       			<visual>
         			<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-          				<!--<mesh filename="package://youbot_description/meshes/youbot_base/youbot_wheel.stl" />-->
+          				<!--<mesh filename="package://examples/youbot/meshes/youbot_base/youbot_wheel.stl" />-->
 					<sphere radius="${wheel_radius}"/>
         			</geometry>
        				<material name="Orange" />
@@ -250,7 +250,7 @@
       			<visual>
         			<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-          				<!--<mesh filename="package://youbot_description/meshes/youbot_base/youbot_wheel.stl" />-->
+          				<!--<mesh filename="package://examples/youbot/meshes/youbot_base/youbot_wheel.stl" />-->
 					<sphere radius="${wheel_radius}"/>
         			</geometry>
        				<material name="Orange" />
@@ -303,7 +303,7 @@
       			<visual>
         			<origin xyz="0 0 0" rpy="0 0 0" />
 				<geometry>
-          				<!--<mesh filename="package://youbot_description/meshes/youbot_base/youbot_wheel.stl" />-->
+          				<!--<mesh filename="package://examples/youbot/meshes/youbot_base/youbot_wheel.stl" />-->
 					<sphere radius="${wheel_radius}"/>
         			</geometry>
        				<material name="Orange" />
