@@ -25,7 +25,7 @@ if __name__ == "__main__":
         locations = yaml.load(f, Loader=SafeLoader)
 
     root = py_trees.composites.Selector(name="rootSelector")
-    root.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations["location1"]) ,navigation.GetMobileToPose(name = "GetToPose",location=locations["location1"])])
+    root.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations["location2"]) ,navigation.GetMobileToPose(name = "GetToPose",location=locations["location2"])])
 
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)
 

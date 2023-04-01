@@ -3,16 +3,18 @@
 import rospy
 import random
 import yaml
+import math
 from tf.transformations import quaternion_from_euler
 from gazebo_msgs.srv import SpawnModel
 from geometry_msgs.msg import Pose
 from yaml.loader import SafeLoader
 
+block_pos_offset = 0.6
 def create_pos_from_location(bl_location):
 
     p = Pose()
-    p.position.x = bl_location[0]
-    p.position.y = bl_location[1]
+    p.position.x = bl_location[0] + block_pos_offset*math.cos(bl_location[2])
+    p.position.y = bl_location[1] + block_pos_offset*math.sin(bl_location[2])
     quaternion = quaternion_from_euler(0,0,bl_location[2])
 
     p.orientation.x = quaternion[0]

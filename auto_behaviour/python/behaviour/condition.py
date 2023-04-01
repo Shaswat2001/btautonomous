@@ -11,10 +11,6 @@ class IsMobileAtPose(py_trees.behaviour.Behaviour):
         super(IsMobileAtPose,self).__init__(name)
         self.location = location
         self.current_pos = None
-
-    def initialise(self):
-
-        pass
     
     def callback(self,msg_pose):
 
