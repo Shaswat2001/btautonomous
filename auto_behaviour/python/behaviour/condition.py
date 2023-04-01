@@ -1,9 +1,9 @@
 import py_trees
 
-class GetMobileToPose(py_trees.behaviour.Behaviour):
+class IsMobileAtPose(py_trees.behaviour.Behaviour):
 
     def __init__(self, name):
-        super().__init__(name)
+        super(IsMobileAtPose,self).__init__(name)
 
     def setup(self):
         pass
@@ -16,7 +16,3 @@ class GetMobileToPose(py_trees.behaviour.Behaviour):
     
     def terminate(self):
         return 0
-
-class IsMobileAtPose(py_trees.behaviour.Behaviour):
-
-    pass

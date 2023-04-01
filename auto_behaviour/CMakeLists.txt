@@ -6,6 +6,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   tf2
 )
+catkin_python_setup()
 
 catkin_package()
 
