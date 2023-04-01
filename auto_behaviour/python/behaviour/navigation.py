@@ -62,7 +62,6 @@ class GetMobileToPose(py_trees.behaviour.Behaviour):
 
         return goal
 
-
 class PickObject(py_trees.behaviour.Behaviour):
 
     def __init__(self, name):

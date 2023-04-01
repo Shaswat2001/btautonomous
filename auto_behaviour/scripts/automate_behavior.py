@@ -7,6 +7,7 @@ import py_trees_ros
 import yaml
 from yaml.loader import SafeLoader
 from behaviour import navigation
+from behaviour import condition
 
 def create_behaviour_tree_from_xml(xml_file):
 
@@ -15,8 +16,8 @@ def create_behaviour_tree_from_xml(xml_file):
 if __name__ == "__main__":
 
     rospy.init_node('automate_behaviour')
-    behaviour_location = rospy.get_param('bt_location')
-    file = minidom.parse(behaviour_location)
+    # behaviour_location = rospy.get_param('bt_location')
+    # file = minidom.parse(behaviour_location)
 
     block_location = rospy.get_param('block_locations')
 
@@ -24,7 +25,7 @@ if __name__ == "__main__":
         locations = yaml.load(f, Loader=SafeLoader)
 
     root = py_trees.composites.Selector(name="rootSelector")
-    root.add_children([navigation.GetMobileToPose(name = "GetToPose",location=locations["location1"])])
+    root.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations["location1"]) ,navigation.GetMobileToPose(name = "GetToPose",location=locations["location1"])])
 
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)
 
