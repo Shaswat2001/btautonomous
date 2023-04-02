@@ -4,6 +4,8 @@ project(examples)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  moveit_msgs
+  shape_msgs
   rviz
 )
 

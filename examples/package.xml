@@ -12,12 +12,18 @@
   <build_depend>tf2</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>rviz</build_depend>
+  <build_depend>shape_msgs</build_depend>
+  <build_depend>moveit_msgs</build_depend>
   <build_export_depend>tf2</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>rviz</build_export_depend>
+  <build_export_depend>shape_msgs</build_export_depend>
+  <build_export_depend>moveit_msgs</build_export_depend>
   <exec_depend>tf2</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>rviz</exec_depend>
+  <exec_depend>shape_msgs</exec_depend>
+  <exec_depend>moveit_msgs</exec_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->
