@@ -8,6 +8,7 @@ import yaml
 from yaml.loader import SafeLoader
 from behaviour import navigation
 from behaviour import condition
+from behaviour import vision
 
 def create_behaviour_tree_from_xml(xml_file):
 
@@ -24,8 +25,13 @@ if __name__ == "__main__":
     with open(block_location) as f:
         locations = yaml.load(f, Loader=SafeLoader)
 
-    root = py_trees.composites.Selector(name="rootSelector")
-    root.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations["location2"]) ,navigation.GetMobileToPose(name = "GetToPose",location=locations["location2"])])
+    root = py_trees.composites.Sequence(name = "rootSequence")
+    child = py_trees.composites.Selector(name="child")
+
+    child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations["location2"]),
+                        navigation.GetMobileToPose(name = "GetToPose",location=locations["location2"])])
+    
+    root.add_children([child,vision.LookForColoredObject(name="computer_vision",color="green")])
 
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)
 
