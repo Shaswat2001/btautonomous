@@ -6,9 +6,7 @@ import py_trees
 import py_trees_ros
 import yaml
 from yaml.loader import SafeLoader
-from behaviour import navigation
-from behaviour import condition
-from behaviour import vision
+from behaviour import navigation,condition,vision
 
 def create_behaviour_tree_from_xml(xml_file):
 
@@ -21,18 +19,26 @@ if __name__ == "__main__":
     # file = minidom.parse(behaviour_location)
 
     block_location = rospy.get_param('block_locations')
+    target_color = rospy.get_param("target_color")
 
     with open(block_location) as f:
         locations = yaml.load(f, Loader=SafeLoader)
 
-    root = py_trees.composites.Sequence(name = "rootSequence")
-    child = py_trees.composites.Selector(name="child")
+    root = py_trees.composites.Selector(name="TOPLLayer")
+    children = []
+    for location in locations.keys():
+ 
+        childRoot = py_trees.composites.Sequence(name = "ch1Sequence")
+        child = py_trees.composites.Selector(name="child")
 
-    child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations["location2"]),
-                        navigation.GetMobileToPose(name = "GetToPose",location=locations["location2"])])
-    
-    root.add_children([child,vision.LookForColoredObject(name="computer_vision",color="green")])
+        child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations[location]),
+                            navigation.GetMobileToPose(name = "GetToPose",location=locations[location])])
+        
+        childRoot.add_children([child,vision.LookForColoredObject(name="computer_vision",color=target_color)])
 
+        children.append(childRoot)
+
+    root.add_children(children)
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)
 
     done = False

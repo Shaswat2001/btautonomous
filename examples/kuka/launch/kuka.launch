@@ -6,7 +6,8 @@
     <arg name = "z_pos" default = "0"/>
 
     <param name = "robot_description" command = "$(find xacro)/xacro '$(find examples)/kuka/urdf/kr210.urdf.xacro'"/>
-    <param name = "block_locations" value = "$(find examples)/turtlebot/maps/block_location.yaml"/> 
+    <param name = "object_locations" value = "$(find examples)/kuka/config/world_locations.yaml"/> 
+    <param name = "objects" value = "[table,blocks]"/> 
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="debug" value="false" />

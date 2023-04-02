@@ -37,7 +37,7 @@ class IsMobileAtPose(py_trees.behaviour.Behaviour):
 
         loc = self.location
         pos = p2.position
-        if self.isClose(loc[0], pos.x) and self.isClose(loc[1], pos.y) and self.isClose(0, pos.z):
+        if self.isClose(loc[0], pos.x) and self.isClose(loc[1], pos.y) and self.isClose(loc[2], pos.z):
             return True
         return False
 

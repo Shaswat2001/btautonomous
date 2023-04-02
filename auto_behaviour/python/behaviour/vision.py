@@ -51,6 +51,7 @@ class LookForColoredObject(py_trees.behaviour.Behaviour):
                 
         hsv = cv2.cvtColor(self.image, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(hsv, self.h_min, self.h_max)
+        cv2.imwrite("filename.jpg",mask)
         keypoints = self.detector.detect(mask)
 
         if len(keypoints) == 0:

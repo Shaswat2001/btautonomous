@@ -5,10 +5,13 @@
     <arg name = "x_pos" default = "1.0"/>
     <arg name = "y_pos" default = "1.0"/>
     <arg name = "z_pos" default = "0"/>
+    <arg name = "target_color" default = "red"/>
 
     <param name = "robot_description" command = "$(find xacro)/xacro '$(find turtlebot3_description)/urdf/turtlebot3_$(arg robot_name).urdf.xacro'"/>
     <param name = "block_locations" value = "$(find examples)/turtlebot/maps/block_location.yaml"/> 
-
+    <param name = "target_color" value = "$(arg target_color)"/>
+    <param name = "objects" value = "[blocks]"/> 
+    
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value = "$(find examples)/turtlebot/world/$(arg world).world"/>
         <arg name="debug" value="false" />

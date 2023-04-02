@@ -51,9 +51,9 @@ class GetMobileToPose(py_trees.behaviour.Behaviour):
         goal.target_pose.header.stamp = rospy.Time.now()
         goal.target_pose.pose.position.x = location[0]
         goal.target_pose.pose.position.y = location[1]
-        goal.target_pose.pose.position.z = 0
+        goal.target_pose.pose.position.z = location[2]
 
-        quaternion = quaternion_from_euler(0,0,location[2])
+        quaternion = quaternion_from_euler(0,0,location[3])
 
         goal.target_pose.pose.orientation.x = quaternion[0]
         goal.target_pose.pose.orientation.y = quaternion[1]
