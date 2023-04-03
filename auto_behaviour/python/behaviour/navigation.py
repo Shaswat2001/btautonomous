@@ -64,8 +64,12 @@ class GetMobileToPose(py_trees.behaviour.Behaviour):
 
 class PickObject(py_trees.behaviour.Behaviour):
 
-    def __init__(self, name):
+    def __init__(self, name, arm, gripper,pose):
         super(PickObject,self).__init__(name)
+
+        self.arm = arm
+        self.gripper = gripper
+        self.pose = pose
 
     def setup(self):
         pass
@@ -73,8 +77,15 @@ class PickObject(py_trees.behaviour.Behaviour):
     def initialise(self):
         return super().initialise()
     
+    def open_gripper(self):
+        pass
+
     def update(self):
         return super().update()
     
-    def terminate(self):
-        return 0
+    def terminate(self,new_status):
+        self.logger.info(f"Terminated with status {new_status}")
+    
+class PlaceObject(py_trees.behaviour.Behaviour):
+
+    pass
