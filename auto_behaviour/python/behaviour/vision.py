@@ -6,9 +6,9 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 
 color_range = {
-    "red" : ((0, 220, 0), (30, 255, 255)),
-    "green": ((40, 220, 0), (80, 255, 255)),
-    "blue": ((100, 220, 0), (140, 255, 255)),
+    "red": ((160, 220, 0), (180, 255, 255)),
+    "green": ((40, 220, 0), (90, 255, 255)),
+    "blue": ((100, 220, 0), (150, 255, 255)),
 }
 
 class LookForColoredObject(py_trees.behaviour.Behaviour):
