@@ -6,7 +6,7 @@ import py_trees
 import py_trees_ros
 import yaml
 from yaml.loader import SafeLoader
-from behaviour import navigation,condition,vision
+from behaviour import navigation,condition,vision,decorator
 
 def create_behaviour_tree_from_xml(xml_file):
 
@@ -26,17 +26,21 @@ if __name__ == "__main__":
 
     root = py_trees.composites.Selector(name="TOPLLayer")
     children = []
+    i = 0
     for location in locations.keys():
  
-        childRoot = py_trees.composites.Sequence(name = "ch1Sequence")
-        child = py_trees.composites.Selector(name="child")
+        childRoot = py_trees.composites.Sequence(name = "ch1Sequence_"+str(i))
+        child = py_trees.composites.Selector(name="child_"+str(i))
 
-        child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose",location =locations[location]),
-                            navigation.GetMobileToPose(name = "GetToPose",location=locations[location])])
+        child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose_"+str(i),location =locations[location]),
+                            navigation.GetMobileToPose(name = "GetToPose_"+str(i),location=locations[location])])
         
-        childRoot.add_children([child,vision.LookForColoredObject(name="computer_vision",color=target_color)])
+        childRoot.add_children([child,vision.LookForColoredObject(name="computer_vision_"+str(i),color=target_color)])
 
-        children.append(childRoot)
+        oneshot = decorator.OneShot("oneShot_"+str(i),childRoot,False)
+
+        children.append(oneshot)
+        i+=1
 
     root.add_children(children)
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)
