@@ -27,20 +27,21 @@ if __name__ == "__main__":
     root = py_trees.composites.Selector(name="TOPLLayer")
     children = []
     i = 0
-    for location in locations.keys():
- 
-        childRoot = py_trees.composites.Sequence(name = "ch1Sequence_"+str(i))
-        child = py_trees.composites.Selector(name="child_"+str(i))
+    for objects in locations.keys():
+        for location in locations[objects].keys():
+    
+            childRoot = py_trees.composites.Sequence(name = "ch1Sequence_"+str(i))
+            child = py_trees.composites.Selector(name="child_"+str(i))
 
-        child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose_"+str(i),location =locations[location]),
-                            navigation.GetMobileToPose(name = "GetToPose_"+str(i),location=locations[location])])
-        
-        childRoot.add_children([child,vision.LookForColoredObject(name="computer_vision_"+str(i),color=target_color)])
+            child.add_children([condition.IsMobileAtPose(name = "CheckMobilePose_"+str(i),location =locations[objects][location]),
+                                navigation.GetMobileToPose(name = "GetToPose_"+str(i),location=locations[objects][location])])
+            
+            childRoot.add_children([child,vision.LookForColoredObject(name="computer_vision_"+str(i),color=target_color)])
 
-        oneshot = decorator.OneShot("oneShot_"+str(i),childRoot,False)
+            oneshot = decorator.OneShot("oneShot_"+str(i),childRoot,False)
 
-        children.append(oneshot)
-        i+=1
+            children.append(oneshot)
+            i+=1
 
     root.add_children(children)
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)

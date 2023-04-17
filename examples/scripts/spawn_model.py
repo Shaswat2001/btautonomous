@@ -37,16 +37,31 @@ if __name__ == "__main__":
 
     spawn_model_client = rospy.ServiceProxy('/gazebo/spawn_sdf_model', SpawnModel)
 
-    colors = ['red','green','blue']
-    
-    locations = obj_locations
-    for num,location in enumerate(locations.keys()):
-        color = random.choice(colors)
-        spawn_model_client(
-            model_name='block_'+str(num),
-            model_xml=open('/home/shaswat/btautonomous/src/examples/model/blocks/'+color+'_block.sdf', 'r').read(),
-            robot_namespace='/',
-            initial_pose=create_pos_from_location(locations[location]),
-            reference_frame='map'
-        )
+    if "table" in objects:
+
+        locations = obj_locations["table"]
+        for num,location in enumerate(locations.keys()):
+
+            spawn_model_client(
+                model_name='table_'+str(num),
+                model_xml=open('/home/shaswat/btautonomous/src/examples/model/table/table1.sdf', 'r').read(),
+                robot_namespace='/',
+                initial_pose=create_pos_from_location(locations[location]),
+                reference_frame='map'
+            )
+
+    if "blocks" in objects:
+
+        colors = ['red','green','blue']
+
+        locations = obj_locations["block"]
+        for num,location in enumerate(locations.keys()):
+            color = random.choice(colors)
+            spawn_model_client(
+                model_name='block_'+str(num),
+                model_xml=open('/home/shaswat/btautonomous/src/examples/model/blocks/'+color+'_block.sdf', 'r').read(),
+                robot_namespace='/',
+                initial_pose=create_pos_from_location(locations[location]),
+                reference_frame='map'
+            )
 
