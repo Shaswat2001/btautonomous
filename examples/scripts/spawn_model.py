@@ -30,7 +30,7 @@ if __name__ == "__main__":
     rospy.init_node('spawn_model',anonymous=True)
 
     objects = rospy.get_param("objects")
-    object_location = rospy.get_param('block_locations')
+    object_location = rospy.get_param('object_locations')
 
     with open(object_location) as f:
         obj_locations = yaml.load(f, Loader=SafeLoader)
