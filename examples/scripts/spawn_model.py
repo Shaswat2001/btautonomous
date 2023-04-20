@@ -47,7 +47,7 @@ if __name__ == "__main__":
                 model_xml=open('/home/shaswat/btautonomous/src/examples/model/table/table1.sdf', 'r').read(),
                 robot_namespace='/',
                 initial_pose=create_pos_from_location(locations[location]),
-                reference_frame='map'
+                reference_frame='world'
             )
 
     if "blocks" in objects:
@@ -62,6 +62,6 @@ if __name__ == "__main__":
                 model_xml=open('/home/shaswat/btautonomous/src/examples/model/blocks/'+color+'_block.sdf', 'r').read(),
                 robot_namespace='/',
                 initial_pose=create_pos_from_location(locations[location]),
-                reference_frame='map'
+                reference_frame='world'
             )
 

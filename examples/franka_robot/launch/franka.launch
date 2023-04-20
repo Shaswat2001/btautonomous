@@ -2,10 +2,10 @@
 <launch>
 
     <arg name = "world" default = "maze1"/> 
-    <arg name = "x_pos" default = "1.0"/>
+    <arg name = "x_pos" default = "0.0"/>
     <arg name = "robot_name" value = "$(env FRANKA_MODEL)"/>
-    <arg name = "y_pos" default = "1.0"/>
-    <arg name = "z_pos" default = "0"/>
+    <arg name = "y_pos" default = "0.0"/>
+    <arg name = "z_pos" default = "1.03"/>
 
     <arg name="gazebo"      default="true"  doc="Should the gazebo simulation be launched? Use false in case if you want to include this file and launch gazebo yourself" />
     <arg name="headless"    default="false" doc="Should the gazebo GUI be launched?" />
@@ -50,7 +50,7 @@
 
     <param name = "object_locations" value = "$(find examples)/franka_robot/config/world_locations.yaml"/> 
     <param name = "objects" value = "[table,blocks]"/> 
-    <param name = "frame_id" value = "panda_link0"/>
+    <param name = "frame_id" value = "$(arg arm_id)_link0"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch" if="$(arg gazebo)">
         <!-- <arg name="world_name" value="$(arg world)"/> -->
