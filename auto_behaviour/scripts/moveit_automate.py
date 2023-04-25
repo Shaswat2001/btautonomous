@@ -28,14 +28,14 @@ if __name__ == "__main__":
     group_name_hand = "fr3_hand"
     move_group_hand = moveit_commander.MoveGroupCommander(group_name_hand)
     
-    # joint_goal = move_group_arm.get_current_joint_values()
-    # joint_goal[0] = 0
-    # joint_goal[1] = -tau / 8
-    # joint_goal[2] = 0
-    # joint_goal[3] = -tau / 4
-    # joint_goal[4] = 0
-    # joint_goal[5] = tau / 6  # 1/6 of a turn
-    # joint_goal[6] = 0
+    joint_goal = move_group_arm.get_current_joint_values()
+    joint_goal[0] = 0
+    joint_goal[1] = -tau / 8
+    joint_goal[2] = 0
+    joint_goal[3] = -tau / 4
+    joint_goal[4] = 0
+    joint_goal[5] = tau / 6  # 1/6 of a turn
+    joint_goal[6] = 0
 
     # joint_goal = move_group_hand.get_current_joint_values()
     # joint_goal[0] = 0.002
@@ -60,7 +60,8 @@ if __name__ == "__main__":
     # move_group_arm.execute(plan, wait=True)
 
     root = py_trees.composites.Selector(name="TOPLLayer")
-    root.add_child(grasping.OpenGripper("hand",move_group_hand,0.03))
+    # root.add_child(grasping.MoveGripper("hand",move_group_hand,0.03))
+    root.add_child(grasping.GoToPose("arm",move_group_arm,joint_goal))
 
     ros_py_tree = py_trees_ros.trees.BehaviourTree(root)
 
